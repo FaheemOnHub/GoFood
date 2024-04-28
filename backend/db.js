@@ -5,4 +5,16 @@ exports.mongoURI =
 
 exports.connectDB = async (mongoURI) => {
   await mongoose.connect(mongoURI, {});
+  console.log("MongoDB connection established");
+  const fetchAllData = async () => {
+    try {
+      const collection = mongoose.connection.db.collection("food_items"); // replace 'yourCollectionName' with the name of your collection
+      const data = await collection.find({}).toArray(); // fetch all documents in the collection
+      //   console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  fetchAllData();
 };

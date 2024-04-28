@@ -6,8 +6,21 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-connectDB(mongoURI);
-console.log("😍 DB SUCCESSFULLY CONNECTED\n----------------------------");
-app.listen(port, () => {
-  console.log(`🤩 App is running on port ${port}`);
-});
+// connectDB(mongoURI);
+
+// app.listen(port, () => {
+//   console.log(`🤩 App is running on port ${port}`);
+// });
+
+const start = async () => {
+  try {
+    await connectDB(mongoURI);
+    console.log("😍 DB SUCCESSFULLY CONNECTED\n----------------------------");
+    app.listen(port, () => {
+      console.log(`🤩 App is running on port ${port}`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+start();
