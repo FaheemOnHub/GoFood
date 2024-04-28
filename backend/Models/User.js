@@ -5,15 +5,15 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: [true, "A User must have a name"],
   },
   location: {
     type: String,
-    required: true,
+    required: false,
   },
   email: {
     type: String,
-    required: true,
+    required: false,
   },
   password: {
     type: String,
@@ -25,4 +25,4 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("User", userSchema); //model name is User
+module.exports = mongoose.model("User", userSchema); //model name is User,Wraaping the schema in a model
