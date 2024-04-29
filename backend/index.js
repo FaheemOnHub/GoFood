@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 // app.listen(port, () => {
 //   console.log(`🤩 App is running on port ${port}`);
 // });
-app.use(express.json());
+app.use(express.json()); // for parsing application/json //middleware is necessary to parse the request body(req.body)
 app.use("/api", createUser);
 const start = async () => {
   try {
